@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Vendas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #008000;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #008000;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #006400;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #008000;
+            color: white;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monitoramento de Vendas</h1>
+        
+        <form id="saleForm">
+            <input type="text" id="productName" placeholder="Nome do Produto" required>
+            <input type="number" id="unitPrice" placeholder="Preço Unitário" required>
+            <input type="number" id="quantity" placeholder="Quantidade" required>
+            <button type="submit">Adicionar Venda</button>
+        </form>
+
+        <h2>Vendas Registradas</h2>
+        <input type="text" id="searchBox" placeholder="Buscar produto...">
+        <button onclick="exportCSV()">Exportar CSV</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço Unitário</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="salesTable"></tbody>
+        </table>
+
+        <h2>Faturamento Mensal: <span id="monthlyRevenue">R$ 0,00</span></h2>
+        <h2>Desempenho: <span id="performance">Aguardando dados...</span></h2>
+        <h2>Previsão de Receita: <span id="forecast">Calculando...</span></h2>
+
+        <canvas id="salesChart"></canvas>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
